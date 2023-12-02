@@ -34,11 +34,9 @@
         const modifiedText = "123 456";
         const targetElement = document.getElementById("diffResult");
         const diffString = Diff2Html.parse(JsDiff.createTwoFilesPatch("Original", "Modified", originalText, modifiedText));
+        const diffString2 = Diff2Html.parse(JsDiff.createTwoFilesPatch("Original 2", "Modified 2", originalText, modifiedText));
 
-        window.console.log([...diffString,...diffString])
-
-
-        var diff2htmlUi = new Diff2HtmlUI(targetElement, [...diffString,...diffString], configuration);
+        var diff2htmlUi = new Diff2HtmlUI(targetElement, [...diffString,...diffString2], configuration);
         diff2htmlUi.draw();
     })
 </script>
