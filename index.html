@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Make sure to load the highlight.js CSS file before the Diff2Html CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css"
+    />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html.min.js"></script>
+  </head>
+
+  <script src="diff.js"></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var configuration = {
+        drawFileList: true,
+        fileListToggle: false,
+        fileListStartVisible: false,
+        fileContentToggle: false,
+        matching: 'words',
+        outputFormat: 'side-by-side',
+        synchronisedScroll: true,
+        highlight: true,
+        renderNothingWhenEmpty: false,
+      };
+
+        // Получение текста из текстовых полей
+        const originalText = "Этот код создает n\nростой интерфейс для просмотра разницы между двумя списками строк. При нажатии на кнопки происходит вызов функции showDifference, которая использует библиотеку JSDiff для сравнения списков и отображения разницы между ними. В результате каждая строка разницы будет выделена и пронумерована.";
+        const modifiedText = "123 456";
+        const targetElement = document.getElementById("diffResult");
+        const diffString = Diff2Html.parse(JsDiff.createTwoFilesPatch("Original", "Modified", originalText, modifiedText));
+
+        window.console.log([...diffString,...diffString])
+
+
+        var diff2htmlUi = new Diff2HtmlUI(targetElement, [...diffString,...diffString], configuration);
+        diff2htmlUi.draw();
+    })
+</script>
+  <body>
+    <div>
+        <h4>Diff Result</h4>
+        <div id="diffResult"></div>
+    </div>
+  </body>
+</html>

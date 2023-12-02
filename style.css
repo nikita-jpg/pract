@@ -1,0 +1,19 @@
+.line-number {
+    min-width: 20px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+    color: #999;
+  }
+
+  .line {
+    display: inline;
+  }
+
+  .line.added {
+    background-color: #dcffe4;
+  }
+
+  .line.removed {
+    background-color: #ffeef0;
+  }
